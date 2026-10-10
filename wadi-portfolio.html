@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wadi Boughanmi | GIS Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06101c;--bg2:#0b1b2e;--card:#0d2036;--ink:#e6eef8;--mute:#8aa0ba;--bd:#1b3552;--c1:#4cc9f0;--c2:#ffb454;--c3:#3ddc97;--c4:#ff6b8b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f7fb;--bg2:#e6eef6;--card:#fff;--ink:#0a1a2c;--mute:#4f6580;--bd:#cbd9e6;--c1:#0a84b8;--c2:#c46a00;--c3:#0f9a63;--c4:#d6335b}}
+:root[data-theme="light"]{--bg:#f3f7fb;--bg2:#e6eef6;--card:#fff;--ink:#0a1a2c;--mute:#4f6580;--bd:#cbd9e6;--c1:#0a84b8;--c2:#c46a00;--c3:#0f9a63;--c4:#d6335b}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 'DM Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:Sora,system-ui,sans-serif;margin:0;line-height:1.1;letter-spacing:-.025em}a{color:inherit}
+:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px 6vw;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+nav b{font:800 17px Sora,sans-serif}nav div{display:flex;gap:24px;font-size:15px;font-weight:500}nav a{text-decoration:none;color:var(--mute)}nav a:hover{color:var(--ink)}
+@media(max-width:560px){nav div{gap:12px;font-size:13px}}
+.w{max-width:1200px;margin:0 auto;padding:0 6vw}
+#hero{padding:56px 0 70px;background:radial-gradient(70% 80% at 75% 40%,var(--bg2),var(--bg))}
+.hg{display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center}
+@media(max-width:900px){.hg{grid-template-columns:1fr}.gl{order:-1;max-width:520px;margin:0 auto}}
+.tag{color:var(--c1);font-weight:600;font-size:15px}
+h1{font-size:clamp(38px,5.6vw,66px);font-weight:800;margin:14px 0 18px}
+.lead{color:var(--mute);font-size:18px;max-width:48ch;margin:0 0 22px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.b{padding:12px 22px;border-radius:12px;font-weight:600;text-decoration:none;border:1.5px solid var(--bd);transition:transform .2s}.b:hover{transform:translateY(-2px)}
+.b.p{background:var(--c1);border-color:var(--c1);color:#04131f}
+.lp{background:color-mix(in srgb,var(--card) 88%,transparent);border:1px solid var(--bd);border-radius:18px;padding:18px 20px;backdrop-filter:blur(8px)}
+.lp>small{display:block;color:var(--mute);margin-bottom:12px;font-size:14px}
+.ly{margin-bottom:14px}.ly:last-child{margin-bottom:0}
+.ly div{display:flex;justify-content:space-between;font-weight:600;font-size:15px}.ly div i{font-style:normal;color:var(--c);font-variant-numeric:tabular-nums}
+.ly div span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--c);margin-right:9px}
+.ly input{width:100%;accent-color:var(--c);margin:6px 0 0;height:22px}
+.gl{position:relative;aspect-ratio:1;width:100%;cursor:grab;touch-action:pan-y}.gl:active{cursor:grabbing}
+#g{position:absolute;inset:0;width:100%;height:100%}
+.hint{position:absolute;left:0;right:0;bottom:-6px;text-align:center;color:var(--mute);font-size:13px;pointer-events:none}
+section{padding:84px 0}.alt{background:var(--bg2);border-block:1px solid var(--bd)}
+h2{font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:10px}.sub{color:var(--mute);max-width:60ch;margin:0 0 36px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.stats div{border-left:3px solid var(--c1);padding:4px 0 4px 18px}.stats div:nth-child(2){border-color:var(--c2)}.stats div:nth-child(3){border-color:var(--c3)}.stats div:nth-child(4){border-color:var(--c4)}
+.stats b{display:block;font:800 clamp(40px,6vw,60px)/1.1 Sora,sans-serif}.stats span{color:var(--mute);font-size:15px}
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.stack div{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:24px;border-top:3px solid var(--c)}
+.stack h3{font-size:18px;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{padding:5px 13px;border-radius:99px;border:1px solid var(--bd);font-weight:500;font-size:14px}
+.tl{border-left:2px solid var(--bd);margin-left:6px}
+.tl div{position:relative;padding:0 0 28px 28px}.tl div:before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--c1);box-shadow:0 0 0 4px var(--bg2)}
+.tl h3{font-size:20px;margin-bottom:6px}.tl p{margin:0;color:var(--mute);max-width:66ch}
+.pj{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.pc{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:26px;text-decoration:none;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+.pc:before{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;border:1px solid var(--c);box-shadow:0 0 0 22px transparent,0 0 0 23px var(--bd),0 0 0 46px transparent,0 0 0 47px var(--bd);opacity:.7}
+.pc:hover{transform:translateY(-5px);border-color:var(--c)}
+.pc h3{font-size:22px;margin-bottom:10px;max-width:80%}.pc p{color:var(--mute);margin:0 0 18px;flex:1}.pc em{font-style:normal;color:var(--c);font-weight:600;font-size:15px;margin-top:18px}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.ct a{padding:22px;border:1px solid var(--bd);border-radius:16px;text-decoration:none;background:var(--card)}.ct a:hover{border-color:var(--c1)}
+.ct small{display:block;color:var(--mute)}.ct b{word-break:break-all}
+footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
+#pr{position:fixed;top:0;left:0;right:0;height:3px;z-index:20;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--c1),var(--c3),var(--c2),var(--c4))}
+#hud{position:absolute;left:3%;top:3%;font-size:13px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;pointer-events:none;background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid var(--bd);padding:4px 11px;border-radius:9px}
+.pc{background:radial-gradient(320px circle at var(--mx,50%) var(--my,-50%),color-mix(in srgb,var(--c) 16%,transparent),transparent 70%),var(--card)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="pr"></div>
+<nav><b>Wadi Boughanmi</b><div><a href="#skills">Skills</a><a href="#exp">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div></nav>
+
+<header id="hero"><div class="w hg">
+<div>
+<span class="tag">GIS developer · Tunis</span>
+<h1>I turn location data into products people use.</h1>
+<p class="lead">Web maps, 3D platforms and computer vision, built with Django, Leaflet and Cesium. Each layer below is a skill: drag its slider and watch the globe change.</p>
+<div class="btns"><a class="b p" href="mailto:boughanmi.wadi@gmail.com">Contact me</a><a class="b" href="#projects">View projects</a></div>
+<div class="lp"><small>Skill layers</small>
+<div class="ly" style="--c:var(--c1)"><div><span>Web mapping</span><i>95%</i></div><input type="range" min="0" max="100" value="95" aria-label="Web mapping"></div>
+<div class="ly" style="--c:var(--c2)"><div><span>JavaScript</span><i>90%</i></div><input type="range" min="0" max="100" value="90" aria-label="JavaScript"></div>
+<div class="ly" style="--c:var(--c3)"><div><span>Django</span><i>85%</i></div><input type="range" min="0" max="100" value="85" aria-label="Django"></div>
+<div class="ly" style="--c:var(--c4)"><div><span>AI</span><i>70%</i></div><input type="range" min="0" max="100" value="70" aria-label="AI"></div>
+</div></div>
+<div class="gl"><canvas id="g" role="img" aria-label="Interactive globe where each skill is a map layer"></canvas><div id="hud">36.80°N 10.20°E</div><div class="hint">Drag to rotate and tilt · click the globe to send a request</div></div>
+</div></header>
+
+<section class="alt" style="padding:50px 0"><div class="w"><div class="stats">
+<div><b data-n="10">0</b><span>Works completed</span></div>
+<div><b data-n="3">0</b><span>Years of experience</span></div>
+<div><b data-n="10">0</b><span>Clients served</span></div>
+<div><b data-n="20">0</b><span>Certifications</span></div>
+</div></div></section>
+
+<section id="skills"><div class="w">
+<h2>Technical skills</h2>
+<p class="sub">Full-stack geospatial development, from database and map server to the interactive front end.</p>
+<div class="stack">
+<div style="--c:var(--c1)"><h3>Web mapping</h3><div class="chips"><span>Leaflet.js</span><span>Cesium.js</span><span>Three.js</span><span>GeoServer</span></div></div>
+<div style="--c:var(--c2)"><h3>Frontend</h3><div class="chips"><span>JavaScript</span><span>React.js</span><span>Chart.js</span><span>Responsive design</span></div></div>
+<div style="--c:var(--c3)"><h3>Backend and data</h3><div class="chips"><span>Django</span><span>GeoDjango</span><span>PostgreSQL</span><span>Power BI</span></div></div>
+<div style="--c:var(--c4)"><h3>AI and vision</h3><div class="chips"><span>Python</span><span>YOLOv8</span><span>DeepSort</span><span>Voice commands</span></div></div>
+</div></div></section>
+
+<section class="alt" id="exp"><div class="w">
+<h2>Experience</h2><p class="sub">What I have done so far.</p>
+<div class="tl">
+<div><h3>Leaflet.js developer</h3><p>Built and maintained web mapping applications, working with designers, product managers and developers.</p></div>
+<div><h3>Web developer</h3><p>Built web applications with React.js and Django, with responsive design and cross-browser compatibility.</p></div>
+<div><h3>Cesium.js developer</h3><p>Built and maintained 3D web applications for geospatial visualization.</p></div>
+<div><h3>AI developer</h3><p>Developed AI solutions for object detection, tracking and recognition.</p></div>
+<div><h3>Data analytics</h3><p>Turned complex data into clear dashboards and reports with Power BI, using data modeling to support decisions.</p></div>
+</div></div></section>
+
+<section id="projects"><div class="w">
+<h2>Projects</h2><p class="sub">Real-world work. Each project links to its code.</p>
+<div class="pj">
+<a class="pc" style="--c:var(--c1)" href="https://github.com/wadi-sudo/cesium" target="_blank" rel="noopener"><h3>3D mapping app</h3><p>A web platform to search, query and analyse spatial data in 3D.</p><div class="chips"><span>Cesium</span><span>PostgreSQL</span><span>GeoServer</span></div><em>View code</em></a>
+<a class="pc" style="--c:var(--c2)" href="https://github.com/wadi-sudo/SOTRAPIL/tree/master" target="_blank" rel="noopener"><h3>2D mapping app</h3><p>A web map to query spatial data and read clear statistics from it.</p><div class="chips"><span>GeoDjango</span><span>Leaflet</span><span>GeoServer</span></div><em>View code</em></a>
+<a class="pc" style="--c:var(--c4)" href="https://github.com/wadi-sudo/track2023" target="_blank" rel="noopener"><h3>Object detection and tracking</h3><p>Detects and tracks objects in drone footage using YOLOv8 with DeepSort multi-object tracking.</p><div class="chips"><span>Python</span><span>YOLOv8</span><span>DeepSort</span></div><em>View code</em></a>
+<a class="pc" style="--c:var(--c3)" href="https://github.com/wadi-sudo/TMS" target="_blank" rel="noopener"><h3>Task management system</h3><p>A fully functional task manager with AI voice commands.</p><div class="chips"><span>Django</span><span>Chart.js</span><span>AI</span></div><em>View code</em></a>
+</div></div></section>
+
+<section class="alt" id="contact"><div class="w">
+<h2>Let's work together</h2><p class="sub">Available for GIS, web mapping and AI projects.</p>
+<div class="ct">
+<a href="mailto:boughanmi.wadi@gmail.com"><small>Email</small><b>boughanmi.wadi@gmail.com</b></a>
+<a href="https://www.linkedin.com/in/wadi-boughanmi-bb4499203" target="_blank" rel="noopener"><small>LinkedIn</small><b>wadi-boughanmi</b></a>
+<a href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><small>GitHub</small><b>wadi-sudo</b></a>
+<a href="https://www.google.com/maps/search/Aouina+Tunis" target="_blank" rel="noopener"><small>Location</small><b>Aouina, Tunis</b></a>
+</div></div></section>
+<footer>© GeoDEV. All rights reserved.</footer>
+
+<script>
+(function(){
+var cv=document.getElementById('g'),x=cv.getContext('2d'),box=cv.parentNode,hud=document.getElementById('hud'),W,H,R,D,
+rs=document.querySelectorAll('.ly input'),A=[.95,.9,.85,.7],lon0=-8,lat0=.42,vx=0,drag=0,px=0,py=0,sx=0,sy=0,
+still=matchMedia('(prefers-reduced-motion:reduce)').matches,t0=performance.now(),RAD=Math.PI/180,stars=[],pins=[];
+for(var s=0;s<140;s++)stars.push([Math.random(),Math.random(),Math.random()]);
+rs.forEach(function(r,i){r.oninput=function(){A[i]=r.value/100;r.parentNode.querySelector('i').textContent=r.value+'%'}});
+function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+function size(){var r=box.getBoundingClientRect();D=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*D;cv.height=H*D;x.setTransform(D,0,0,D,0,0);R=W*.34}
+function Q(v,h){var a=lon0*RAD,x1=v[0]*Math.cos(a)-v[2]*Math.sin(a),z1=v[0]*Math.sin(a)+v[2]*Math.cos(a),y2=v[1]*Math.cos(lat0)-z1*Math.sin(lat0),z2=v[1]*Math.sin(lat0)+z1*Math.cos(lat0);return [W/2+R*h*x1,H/2-R*h*y2,z2]}
+function V(la,lo){la*=RAD;lo*=RAD;return [Math.cos(la)*Math.sin(lo),Math.sin(la),Math.cos(la)*Math.cos(lo)]}
+function P(la,lo,h){return Q(V(la,lo),h||1)}
+function front(p){return p[2]>0}
+function vis(p){return p[2]>0||Math.hypot(p[0]-W/2,p[1]-H/2)>R}
+function poly(pts,f){f=f||front;x.beginPath();var on=0;pts.forEach(function(p){if(f(p)){on?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]);on=1}else on=0});x.stroke()}
+function inv(a,b){var nx=(a-W/2)/R,ny=-(b-H/2)/R,r=nx*nx+ny*ny;if(r>1)return null;var nz=Math.sqrt(1-r),l=lat0,y1=ny*Math.cos(l)+nz*Math.sin(l),z1=-ny*Math.sin(l)+nz*Math.cos(l),al=lon0*RAD;
+return [Math.asin(y1)/RAD,Math.atan2(nx*Math.cos(al)+z1*Math.sin(al),-nx*Math.sin(al)+z1*Math.cos(al))/RAD]}
+function fmt(l){var o=((l[1]+540)%360)-180;return Math.abs(l[0]).toFixed(2)+'°'+(l[0]<0?'S':'N')+' '+Math.abs(o).toFixed(2)+'°'+(o<0?'W':'E')}
+var dv=[],N=1500;for(var i=0;i<N;i++){var y=1-2*(i+.5)/N;dv.push(V(Math.asin(y)/RAD,(i*137.508)%360-180))}
+var T=[36.8,10.2],C=[[48.8,2.3],[25.2,55.3],[40.7,-74],[24.7,46.7],[-33.9,18.4],[35.7,139.7],[51.5,-.1]],
+AI=[[41,13],[33,4],[45,9],[30,20],[38,-3]],OR=[[.6,0,.9],[1.1,2,.7],[.25,4,1.2]];
+function arc(c,t){var a=T[0]*RAD,b=c[0]*RAD,A1=V(T[0],T[1]),B1=V(c[0],c[1]),
+d=Math.acos(Math.max(-1,Math.min(1,A1[0]*B1[0]+A1[1]*B1[1]+A1[2]*B1[2])))||.01,s1=Math.sin((1-t)*d)/Math.sin(d),s2=Math.sin(t*d)/Math.sin(d);
+return Q([s1*A1[0]+s2*B1[0],s1*A1[1]+s2*B1[1],s1*A1[2]+s2*B1[2]],1+.28*Math.sin(Math.PI*t)*d/3)}
+function sat(o,th){return Q([Math.cos(th),-Math.sin(th)*Math.sin(o[0]),Math.sin(th)*Math.cos(o[0])],1.36)}
+function ez(v){v=Math.min(1,Math.max(0,v));return 1-Math.pow(1-v,3)}
+function draw(now){
+var c1=css('--c1'),c2=css('--c2'),c3=css('--c3'),c4=css('--c4'),ink=css('--ink'),bd=css('--bd'),t=still?99:(now-t0)/1000,
+a=[0,1,2,3].map(function(i){return A[i]*ez((t-.3-i*.5)/1.2)});
+if(!drag){lon0+=(still?0:.12)+vx}vx*=.95;
+x.clearRect(0,0,W,H);x.fillStyle=ink;
+stars.forEach(function(s){x.globalAlpha=.1+.45*Math.abs(Math.sin(t*(.4+s[2])+s[0]*9));x.fillRect(s[0]*W,s[1]*H,1.3,1.3)});
+var g=x.createRadialGradient(W/2-R*.3,H/2-R*.3,R*.1,W/2,H/2,R);g.addColorStop(0,css('--card'));g.addColorStop(1,css('--bg'));
+x.globalAlpha=1;x.fillStyle=g;x.beginPath();x.arc(W/2,H/2,R,0,7);x.fill();
+x.strokeStyle=c1;for(var k=0;k<16;k++){x.globalAlpha=.3*Math.pow(1-k/16,2);x.lineWidth=2.2;x.beginPath();x.arc(W/2,H/2,R+k*2,0,7);x.stroke()}
+x.fillStyle=c2;dv.forEach(function(v){var p=Q(v,1);if(p[2]>0){x.globalAlpha=a[1]*(.12+.7*p[2]);x.fillRect(p[0],p[1],1.8,1.8)}});
+x.strokeStyle=c1;x.lineWidth=1;x.globalAlpha=a[0]*.4;
+for(var la=-60;la<=60;la+=30){var l=[];for(var lo=0;lo<=360;lo+=6)l.push(P(la,lo));poly(l)}
+for(var lo=0;lo<360;lo+=30){var l=[];for(var q=-90;q<=90;q+=6)l.push(P(q,lo));poly(l)}
+var sl=62*Math.sin(t*.5),l=[];for(var lo=0;lo<=360;lo+=4)l.push(P(sl,lo));
+x.lineWidth=6;x.globalAlpha=a[0]*.12;poly(l);x.lineWidth=1.8;x.globalAlpha=a[0]*.85;poly(l);
+OR.forEach(function(o,i){var tr=[];for(var j=0;j<40;j++)tr.push(sat(o,o[1]+t*o[2]*.4-j*.035));x.lineWidth=1.4;x.strokeStyle=c1;
+for(var j=0;j<39;j++){if(vis(tr[j])&&vis(tr[j+1])){x.globalAlpha=a[0]*(1-j/39)*.8;x.beginPath();x.moveTo(tr[j][0],tr[j][1]);x.lineTo(tr[j+1][0],tr[j+1][1]);x.stroke()}}
+if(vis(tr[0])){x.globalAlpha=a[0];x.fillStyle=ink;x.fillRect(tr[0][0]-2.5,tr[0][1]-2.5,5,5)}});
+C.forEach(function(c,i){var l=[];for(var s=0;s<=40;s++)l.push(arc(c,s/40));x.strokeStyle=c3;x.lineWidth=1.3;x.globalAlpha=a[2]*.55;poly(l);
+var q=arc(c,((t*.25+i*.14)%1));if(q[2]>0){x.fillStyle=c3;x.globalAlpha=a[2];x.beginPath();x.arc(q[0],q[1],3.2,0,7);x.fill()}});
+var tp=P(T[0],T[1]);
+if(tp[2]>0){x.globalAlpha=a[0];x.fillStyle=c1;x.beginPath();x.arc(tp[0],tp[1],5,0,7);x.fill();
+var k2=(t%2)/2;x.strokeStyle=c1;x.lineWidth=2;x.globalAlpha=a[0]*(1-k2);x.beginPath();x.arc(tp[0],tp[1],5+k2*26,0,7);x.stroke();
+x.globalAlpha=a[0];x.fillStyle=ink;x.font='600 13px DM Sans,sans-serif';x.fillText('Tunis',tp[0]+12,tp[1]-9)}
+pins.forEach(function(n){var p=P(n.la,n.lo),age=(now-n.t)/1000;if(p[2]<=0)return;x.fillStyle=c3;x.globalAlpha=1;x.beginPath();x.arc(p[0],p[1],4,0,7);x.fill();
+if(age<1.6){x.strokeStyle=c3;x.lineWidth=2;x.globalAlpha=1-age/1.6;x.beginPath();x.arc(p[0],p[1],4+age*32,0,7);x.stroke()}
+x.globalAlpha=1;x.fillStyle=ink;x.font='500 11px DM Sans,sans-serif';x.fillText(fmt([n.la,n.lo]),p[0]+9,p[1]+4)});
+AI.forEach(function(b,i){var p=P(b[0]+Math.sin(t*.8+i)*1.2,b[1]+Math.cos(t*.6+i)*1.5);if(p[2]<.15)return;var s=14+8*p[2];
+x.strokeStyle=c4;x.lineWidth=1.8;x.globalAlpha=a[3]*p[2];x.strokeRect(p[0]-s,p[1]-s*.8,s*2,s*1.6);
+if(i<3){x.fillStyle=c4;x.font='600 10.5px DM Sans,sans-serif';x.fillText('id '+(i+3)+' · 0.'+(94-i*3),p[0]-s,p[1]-s*.8-4)}});
+x.globalAlpha=1;requestAnimationFrame(draw)}
+function pt(e){var r=box.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]}
+box.addEventListener('pointerdown',function(e){drag=1;px=sx=e.clientX;py=sy=e.clientY;vx=0;box.setPointerCapture(e.pointerId)});
+box.addEventListener('pointermove',function(e){if(drag){var dx=e.clientX-px;lon0-=dx*.4;vx=Math.max(-5,Math.min(5,-dx*.4));lat0=Math.max(-.3,Math.min(1.1,lat0+(e.clientY-py)*.005));px=e.clientX;py=e.clientY}
+else{var p=pt(e),i=inv(p[0],p[1]);if(i)hud.textContent=fmt(i)}});
+box.addEventListener('pointerup',function(e){drag=0;if(Math.hypot(e.clientX-sx,e.clientY-sy)<6){var p=pt(e),i=inv(p[0],p[1]);
+if(i){pins.push({la:i[0],lo:i[1],t:performance.now()});if(pins.length>6)pins.shift();C.push(i);if(C.length>14)C.splice(7,1);hud.textContent=fmt(i)}}});
+addEventListener('resize',size);size();requestAnimationFrame(draw);
+var pr=document.getElementById('pr');addEventListener('scroll',function(){pr.style.transform='scaleX('+(scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight))+')'},{passive:true});
+document.querySelectorAll('.pc').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,n=+el.dataset.n,s=performance.now();
+(function st(now){var p=Math.min(1,(now-s)/1200);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+(p>=1?'+':'');if(p<1)requestAnimationFrame(st)})(s);io.unobserve(el)})},{threshold:.6});
+document.querySelectorAll('[data-n]').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
