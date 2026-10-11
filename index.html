@@ -65,7 +65,7 @@ footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
 #toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;background:var(--c1);color:#04131f;font-weight:600;padding:10px 20px;border-radius:99px;transition:.35s;z-index:30;pointer-events:none}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 #hero{position:relative}#hero:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--hx,70%) var(--hy,30%),color-mix(in srgb,var(--c1) 11%,transparent),transparent 70%)}#hero .w{position:relative}
-#wd{color:var(--c1);display:inline-block;min-width:1ch}#wd:after{content:"|";margin-left:3px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+#wd{color:var(--c1);display:inline-block;min-width:1ch}
 .tl{position:relative}.tl:after{content:"";position:absolute;left:-2px;top:0;width:2px;height:var(--p,0%);background:var(--c1)}
 .rd{display:flex;align-items:center;gap:30px;margin-top:20px;background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:24px;flex-wrap:wrap}
 .rd svg{width:230px;max-width:100%}.rd h3{font-size:20px;margin-bottom:8px}.rd p{margin:0;color:var(--mute);max-width:44ch}
@@ -82,9 +82,9 @@ footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
 <header id="hero"><div class="w hg">
 <div>
 <span class="tag">GIS and geomatics developer · Tunis</span>
-<h1>I turn location data into <span id="wd">products</span> people use.</h1>
+<h1>I turn location data into <span id="wd">smart tools</span> people use.</h1>
 <p class="lead">From ArcGIS, QGIS and ArcPy automation to web maps, 3D platforms and computer vision, built with Django, Leaflet and Cesium. Each layer below is a skill: drag its slider and watch the globe change.</p>
-<div class="btns"><a class="b p" href="mailto:boughanmi.wadi@gmail.com">Contact me</a><a class="b" href="#projects">View projects</a><a class="b" href="./Cv_Wadi.PDF" download>Download CV</a></div>
+<div class="btns"><a class="b p" href="mailto:boughanmi.wadi@gmail.com">Contact me</a><a class="b" href="#projects">View projects</a><a class="b" href="Cv_Wadi.pdf" download>Download CV</a></div>
 <div class="lp"><small>Skill layers</small>
 <div class="ly" style="--c:var(--c1)"><div><span>Web mapping</span><i>95%</i></div><input type="range" min="0" max="100" value="95" aria-label="Web mapping"></div>
 <div class="ly" style="--c:var(--c2)"><div><span>JavaScript</span><i>90%</i></div><input type="range" min="0" max="100" value="90" aria-label="JavaScript"></div>
@@ -238,8 +238,6 @@ if(!s.dataset.b){[1,.66,.33].forEach(function(v){o+='<polygon class="g" points="
 document.getElementById('rp').setAttribute('points',A.map(function(a,i){return pt(i,a)}).join(' '))}rad();
 document.getElementById('tt').onclick=function(){var d=document.documentElement,cur=d.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');d.dataset.theme=cur==='dark'?'light':'dark'};
 var hero=document.getElementById('hero');hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--hx',e.clientX-r.left+'px');hero.style.setProperty('--hy',e.clientY-r.top+'px')});
-var ws=['products','web maps','3D platforms','smart tools'],wi=0,wc=8,dl=1,wd=document.getElementById('wd');
-if(!still)(function tick(){var w=ws[wi],d;wc+=dl?-1:1;wd.textContent=w.slice(0,wc);d=dl?35:75;if(!dl&&wc===w.length){dl=1;d=1700}else if(dl&&wc===0){dl=0;wi=(wi+1)%ws.length;d=300}setTimeout(tick,d)})();
 var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;el.classList.add('in');ro.unobserve(el);setTimeout(function(){el.classList.remove('rv','in');el.style.transitionDelay=''},1000)})},{threshold:.15});
 if(!still)document.querySelectorAll('.stats>div,.stack>div,.rd,.tl>div,.pc,.ct a').forEach(function(el,i){el.classList.add('rv');el.style.transitionDelay=(i%4)*70+'ms';ro.observe(el)});
 var ts=document.getElementById('toast');document.querySelector('.ct a[href^="mailto"]').addEventListener('click',function(){try{navigator.clipboard.writeText('boughanmi.wadi@gmail.com')}catch(e){}ts.classList.add('on');setTimeout(function(){ts.classList.remove('on')},1800)});
