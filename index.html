@@ -6,10 +6,10 @@
 <title>Wadi Boughanmi | GIS Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#06101c;--bg2:#0b1b2e;--card:#0d2036;--ink:#e6eef8;--mute:#8aa0ba;--bd:#1b3552;--c1:#4cc9f0;--c2:#ffb454;--c3:#3ddc97;--c4:#ff6b8b;
+:root{--bg:#06101c;--bg2:#0b1b2e;--card:#0d2036;--ink:#e6eef8;--mute:#8aa0ba;--bd:#1b3552;--c1:#4cc9f0;--c2:#ffb454;--c3:#3ddc97;--c4:#ff6b8b;--c5:#b78cff;--c6:#7aa2ff;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f7fb;--bg2:#e6eef6;--card:#fff;--ink:#0a1a2c;--mute:#4f6580;--bd:#cbd9e6;--c1:#0a84b8;--c2:#c46a00;--c3:#0f9a63;--c4:#d6335b}}
-:root[data-theme="light"]{--bg:#f3f7fb;--bg2:#e6eef6;--card:#fff;--ink:#0a1a2c;--mute:#4f6580;--bd:#cbd9e6;--c1:#0a84b8;--c2:#c46a00;--c3:#0f9a63;--c4:#d6335b}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f7fb;--bg2:#e6eef6;--card:#fff;--ink:#0a1a2c;--mute:#4f6580;--bd:#cbd9e6;--c1:#0a84b8;--c2:#c46a00;--c3:#0f9a63;--c4:#d6335b;--c5:#7a4fd6;--c6:#3a63d6}}
+:root[data-theme="light"]{--bg:#f3f7fb;--bg2:#e6eef6;--card:#fff;--ink:#0a1a2c;--mute:#4f6580;--bd:#cbd9e6;--c1:#0a84b8;--c2:#c46a00;--c3:#0f9a63;--c4:#d6335b;--c5:#7a4fd6;--c6:#3a63d6}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 'DM Sans',system-ui,sans-serif}
 h1,h2,h3{font-family:Sora,system-ui,sans-serif;margin:0;line-height:1.1;letter-spacing:-.025em}a{color:inherit}
@@ -60,24 +60,37 @@ footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
 #pr{position:fixed;top:0;left:0;right:0;height:3px;z-index:20;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--c1),var(--c3),var(--c2),var(--c4))}
 #hud{position:absolute;left:3%;top:3%;font-size:13px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;pointer-events:none;background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid var(--bd);padding:4px 11px;border-radius:9px}
 .pc{background:radial-gradient(320px circle at var(--mx,50%) var(--my,-50%),color-mix(in srgb,var(--c) 16%,transparent),transparent 70%),var(--card)}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+#tt{background:none;border:1px solid var(--bd);color:var(--ink);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;line-height:1}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;background:var(--c1);color:#04131f;font-weight:600;padding:10px 20px;border-radius:99px;transition:.35s;z-index:30;pointer-events:none}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+#hero{position:relative}#hero:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--hx,70%) var(--hy,30%),color-mix(in srgb,var(--c1) 11%,transparent),transparent 70%)}#hero .w{position:relative}
+#wd{color:var(--c1);display:inline-block;min-width:1ch}#wd:after{content:"|";margin-left:3px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.tl{position:relative}.tl:after{content:"";position:absolute;left:-2px;top:0;width:2px;height:var(--p,0%);background:var(--c1)}
+.rd{display:flex;align-items:center;gap:30px;margin-top:20px;background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:24px;flex-wrap:wrap}
+.rd svg{width:230px;max-width:100%}.rd h3{font-size:20px;margin-bottom:8px}.rd p{margin:0;color:var(--mute);max-width:44ch}
+#rp{fill:color-mix(in srgb,var(--c1) 28%,transparent);stroke:var(--c1);stroke-width:2;transition:all .2s}
+.rd .g{fill:none;stroke:var(--bd)}.rd text{font:600 10px DM Sans,sans-serif;fill:var(--mute)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <div id="pr"></div>
-<nav><b>Wadi </b><div><a href="#skills">Skills</a><a href="#exp">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div></nav>
+<nav><b>Wadi </b><div><a href="#skills">Skills</a><a href="#exp">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a><button id="tt" aria-label="Toggle light or dark theme">◐</button></div></nav>
 
 <header id="hero"><div class="w hg">
 <div>
-<span class="tag">GIS developer · Tunis</span>
-<h1>I turn location data into products people use.</h1>
-<p class="lead">Web maps, 3D platforms and computer vision, built with Django, Leaflet and Cesium. Each layer below is a skill: drag its slider and watch the globe change.</p>
+<span class="tag">GIS and geomatics developer · Tunis</span>
+<h1>I turn location data into <span id="wd">products</span> people use.</h1>
+<p class="lead">From ArcGIS, QGIS and ArcPy automation to web maps, 3D platforms and computer vision, built with Django, Leaflet and Cesium. Each layer below is a skill: drag its slider and watch the globe change.</p>
 <div class="btns"><a class="b p" href="mailto:boughanmi.wadi@gmail.com">Contact me</a><a class="b" href="#projects">View projects</a></div>
 <div class="lp"><small>Skill layers</small>
 <div class="ly" style="--c:var(--c1)"><div><span>Web mapping</span><i>95%</i></div><input type="range" min="0" max="100" value="95" aria-label="Web mapping"></div>
 <div class="ly" style="--c:var(--c2)"><div><span>JavaScript</span><i>90%</i></div><input type="range" min="0" max="100" value="90" aria-label="JavaScript"></div>
 <div class="ly" style="--c:var(--c3)"><div><span>Django</span><i>85%</i></div><input type="range" min="0" max="100" value="85" aria-label="Django"></div>
 <div class="ly" style="--c:var(--c4)"><div><span>AI</span><i>70%</i></div><input type="range" min="0" max="100" value="70" aria-label="AI"></div>
+<div class="ly" style="--c:var(--c5)"><div><span>ArcPy automation</span><i>85%</i></div><input type="range" min="0" max="100" value="85" aria-label="ArcPy automation"></div>
+<div class="ly" style="--c:var(--c6)"><div><span>Geomatics software</span><i>90%</i></div><input type="range" min="0" max="100" value="90" aria-label="Geomatics software"></div>
 </div></div>
 <div class="gl"><canvas id="g" role="img" aria-label="Interactive globe where each skill is a map layer"></canvas><div id="hud">36.80°N 10.20°E</div><div class="hint">Drag to rotate and tilt · click the globe to send a request</div></div>
 </div></header>
@@ -93,15 +106,19 @@ footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
 <h2>Technical skills</h2>
 <p class="sub">Full-stack geospatial development, from database and map server to the interactive front end.</p>
 <div class="stack">
+<div style="--c:var(--c6)"><h3>Geomatics software</h3><div class="chips"><span>ArcGIS</span><span>QGIS</span><span>Global Mapper</span><span>Agisoft Metashape</span></div></div>
+<div style="--c:var(--c5)"><h3>GIS automation</h3><div class="chips"><span>ArcPy (Esri)</span><span>Python scripting</span><span>Cartographic generalisation</span></div></div>
+<div style="--c:var(--c2)"><h3>Remote sensing</h3><div class="chips"><span>Satellite image analysis</span><span>Sentinel-2</span><span>Google Earth Engine</span><span>Change detection</span></div></div>
 <div style="--c:var(--c1)"><h3>Web mapping</h3><div class="chips"><span>Leaflet.js</span><span>Cesium.js</span><span>Three.js</span><span>GeoServer</span></div></div>
 <div style="--c:var(--c2)"><h3>Frontend</h3><div class="chips"><span>JavaScript</span><span>Chart.js</span><span>Responsive design</span></div></div>
-<div style="--c:var(--c3)"><h3>Backend and data</h3><div class="chips"><span>Django</span><span>GeoDjango</span><span>PostgreSQL</span></div></div>
+<div style="--c:var(--c3)"><h3>Backend and data</h3><div class="chips"><span>Django</span><span>GeoDjango</span><span>PostgreSQL</span><span>PostGIS</span><span>Geodatabase design</span><span>OGC services (WMS, WFS)</span></div></div>
 <div style="--c:var(--c4)"><h3>AI and vision</h3><div class="chips"><span>Python</span><span>YOLO</span><span>DeepSort</span></div></div>
-</div></div></section>
+</div><div class="rd"><svg id="rs" viewBox="-35 -10 270 215" role="img" aria-label="Skill radar"></svg><div><h3>Live skill radar</h3><p>It mirrors the sliders in the hero. Move them and the shape changes.</p></div></div></div></section>
 
 <section class="alt" id="exp"><div class="w">
 <h2>Experience</h2><p class="sub">What I have done so far.</p>
 <div class="tl">
+<div><h3>Geomatics and GIS automation</h3><p>Worked with spatial data in ArcGIS, QGIS, Global Mapper and Agisoft Metashape, and automated cartographic workflows with ArcPy, and analysed satellite imagery.</p></div>
 <div><h3>Leaflet.js developer</h3><p>Built and maintained web mapping applications, working with designers, product managers and developers.</p></div>
 <div><h3>Web developer</h3><p>Built web applications with Django, with responsive design and cross-browser compatibility.</p></div>
 <div><h3>Cesium.js developer</h3><p>Built and maintained 3D web applications for geospatial visualization.</p></div>
@@ -112,7 +129,9 @@ footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
 <section id="projects"><div class="w">
 <h2>Projects Category</h2><p class="sub">Real-world work.</p>
 <div class="pj">
-<a class="pc" style="--c:var(--c1)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>3D mapping app</h3><p>A web platform to search, query and analyse spatial data in 3D.</p><div class="chips"><span>Cesium</span><span>PostgreSQL</span><span>GeoServer</span></div></a>
+<a class="pc" style="--c:var(--c5)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>Automatic cartographic generalisation</h3><p>Automates map generalisation in ArcGIS with ArcPy: simplifying and aggregating features to produce clean maps at smaller scales.</p><div class="chips"><span>ArcPy</span><span>ArcGIS</span><span>Python</span></div></a>
+<a class="pc" style="--c:var(--c2)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>Change detection</h3><p>Detects land-cover change from Sentinel-2 imagery processed in Google Earth Engine, and shows the results on a Leaflet map served by Django.</p><div class="chips"><span>Google Earth Engine</span><span>Sentinel-2</span><span>Django</span><span>Leaflet</span></div></a>
+<a class="pc" style="--c:var(--c1)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>3D mapping app</h3><p>A web platform to search, query and analyse spatial data in 3D.</p><div class="chips"><span>Cesium</span><span>PostgreSQL</span><span>PostGIS</span><span>GeoServer</span></div></a>
 <a class="pc" style="--c:var(--c2)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>2D mapping app</h3><p>A web map to query spatial data and read clear statistics from it.</p><div class="chips"><span>GeoDjango</span><span>Leaflet</span><span>GeoServer</span></div></a>
 <a class="pc" style="--c:var(--c4)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>Object detection and tracking</h3><p>Detects and tracks objects in drone footage using YOLO with DeepSort multi-object tracking.</p><div class="chips"><span>Python</span><span>YOLO</span><span>DeepSort</span></div></a>
 <a class="pc" style="--c:var(--c3)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>Task management system</h3><p>A fully functional task management system.</p><div class="chips"><span>Django</span><span>Chart.js</span></div></a>
@@ -128,13 +147,14 @@ footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
 </div></div></section>
 
 
+<div id="toast" role="status">Email copied</div>
 <script>
 (function(){
 var cv=document.getElementById('g'),x=cv.getContext('2d'),box=cv.parentNode,hud=document.getElementById('hud'),W,H,R,D,
-rs=document.querySelectorAll('.ly input'),A=[.95,.9,.85,.7],lon0=-8,lat0=.42,vx=0,drag=0,px=0,py=0,sx=0,sy=0,
-still=matchMedia('(prefers-reduced-motion:reduce)').matches,t0=performance.now(),RAD=Math.PI/180,stars=[],pins=[];
+rs=document.querySelectorAll('.ly input'),A=[.95,.9,.85,.7,.85,.9],lon0=-8,lat0=.42,vx=0,drag=0,px=0,py=0,sx=0,sy=0,
+still=matchMedia('(prefers-reduced-motion:reduce)').matches,t0=performance.now(),RAD=Math.PI/180,stars=[],pins=[],hits=[],ls=0;
 for(var s=0;s<140;s++)stars.push([Math.random(),Math.random(),Math.random()]);
-rs.forEach(function(r,i){r.oninput=function(){A[i]=r.value/100;r.parentNode.querySelector('i').textContent=r.value+'%'}});
+rs.forEach(function(r,i){r.oninput=function(){A[i]=r.value/100;r.parentNode.querySelector('i').textContent=r.value+'%';rad()}});
 function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
 function size(){var r=box.getBoundingClientRect();D=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*D;cv.height=H*D;x.setTransform(D,0,0,D,0,0);R=W*.34}
 function Q(v,h){var a=lon0*RAD,x1=v[0]*Math.cos(a)-v[2]*Math.sin(a),z1=v[0]*Math.sin(a)+v[2]*Math.cos(a),y2=v[1]*Math.cos(lat0)-z1*Math.sin(lat0),z2=v[1]*Math.sin(lat0)+z1*Math.cos(lat0);return [W/2+R*h*x1,H/2-R*h*y2,z2]}
@@ -148,15 +168,16 @@ return [Math.asin(y1)/RAD,Math.atan2(nx*Math.cos(al)+z1*Math.sin(al),-nx*Math.si
 function fmt(l){var o=((l[1]+540)%360)-180;return Math.abs(l[0]).toFixed(2)+'°'+(l[0]<0?'S':'N')+' '+Math.abs(o).toFixed(2)+'°'+(o<0?'W':'E')}
 var dv=[],N=1500;for(var i=0;i<N;i++){var y=1-2*(i+.5)/N;dv.push(V(Math.asin(y)/RAD,(i*137.508)%360-180))}
 var T=[36.8,10.2],C=[[48.8,2.3],[25.2,55.3],[40.7,-74],[24.7,46.7],[-33.9,18.4],[35.7,139.7],[51.5,-.1]],
-AI=[[41,13],[33,4],[45,9],[30,20],[38,-3]],OR=[[.6,0,.9],[1.1,2,.7],[.25,4,1.2]];
+AI=[[41,13],[33,4],[45,9],[30,20],[38,-3]],OR=[[.6,0,.9],[1.1,2,.7],[.25,4,1.2]],U='https://github.com/wadi-sudo',
+PJ=[{n:'3D mapping',c:'--c1',u:U,o:[.9,0,1]},{n:'2D mapping',c:'--c2',u:U,o:[-.7,2,.8]},{n:'Detection',c:'--c4',u:U,o:[.25,4,1.2]},{n:'Task system',c:'--c3',u:U,o:[1.3,1,.9]},{n:'Generalisation',c:'--c5',u:U,o:[-1.2,3,1.1]},{n:'Change detection',c:'--c2',u:U,o:[.5,5,.95]}];
 function arc(c,t){var a=T[0]*RAD,b=c[0]*RAD,A1=V(T[0],T[1]),B1=V(c[0],c[1]),
 d=Math.acos(Math.max(-1,Math.min(1,A1[0]*B1[0]+A1[1]*B1[1]+A1[2]*B1[2])))||.01,s1=Math.sin((1-t)*d)/Math.sin(d),s2=Math.sin(t*d)/Math.sin(d);
 return Q([s1*A1[0]+s2*B1[0],s1*A1[1]+s2*B1[1],s1*A1[2]+s2*B1[2]],1+.28*Math.sin(Math.PI*t)*d/3)}
-function sat(o,th){return Q([Math.cos(th),-Math.sin(th)*Math.sin(o[0]),Math.sin(th)*Math.cos(o[0])],1.36)}
+function sat(o,th,h){return Q([Math.cos(th),-Math.sin(th)*Math.sin(o[0]),Math.sin(th)*Math.cos(o[0])],h||1.36)}
 function ez(v){v=Math.min(1,Math.max(0,v));return 1-Math.pow(1-v,3)}
 function draw(now){
-var c1=css('--c1'),c2=css('--c2'),c3=css('--c3'),c4=css('--c4'),ink=css('--ink'),bd=css('--bd'),t=still?99:(now-t0)/1000,
-a=[0,1,2,3].map(function(i){return A[i]*ez((t-.3-i*.5)/1.2)});
+var c1=css('--c1'),c2=css('--c2'),c3=css('--c3'),c4=css('--c4'),c5=css('--c5'),c6=css('--c6'),ink=css('--ink'),bd=css('--bd'),t=still?99:(now-t0)/1000,
+a=[0,1,2,3,4,5].map(function(i){return A[i]*ez((t-.3-i*.5)/1.2)});
 if(!drag){lon0+=(still?0:.12)+vx}vx*=.95;
 x.clearRect(0,0,W,H);x.fillStyle=ink;
 stars.forEach(function(s){x.globalAlpha=.1+.45*Math.abs(Math.sin(t*(.4+s[2])+s[0]*9));x.fillRect(s[0]*W,s[1]*H,1.3,1.3)});
@@ -184,19 +205,42 @@ x.globalAlpha=1;x.fillStyle=ink;x.font='500 11px DM Sans,sans-serif';x.fillText(
 AI.forEach(function(b,i){var p=P(b[0]+Math.sin(t*.8+i)*1.2,b[1]+Math.cos(t*.6+i)*1.5);if(p[2]<.15)return;var s=14+8*p[2];
 x.strokeStyle=c4;x.lineWidth=1.8;x.globalAlpha=a[3]*p[2];x.strokeRect(p[0]-s,p[1]-s*.8,s*2,s*1.6);
 if(i<3){x.fillStyle=c4;x.font='600 10.5px DM Sans,sans-serif';x.fillText('id '+(i+3)+' · 0.'+(94-i*3),p[0]-s,p[1]-s*.8-4)}});
+var gp=[],sm=[];for(var k=0;k<60;k++){var an=k/60*6.2832,rr=7+2*Math.sin(3*an)+1.2*Math.sin(7*an)+.6*Math.sin(13*an);gp.push(P(28+rr*Math.sin(an),25+rr*Math.cos(an)*1.3))}
+gp.push(gp[0]);x.strokeStyle=c5;x.lineWidth=1;x.globalAlpha=a[4]*.4;poly(gp);
+for(var k=0;k<60;k+=7)sm.push(gp[k]);sm.push(sm[0]);x.lineWidth=2.2;x.globalAlpha=a[4];poly(sm);
+x.fillStyle=c5;sm.forEach(function(p){if(p[2]>0)x.fillRect(p[0]-2.5,p[1]-2.5,5,5)});
+var gc=P(28,25);if(gc[2]>0){x.fillStyle=ink;x.font='600 11px DM Sans,sans-serif';x.fillText('ArcPy · 60 → 9 vertices',gc[0]-52,gc[1]+4)}
+var M=[];for(var i2=0;i2<7;i2++){M.push([]);for(var j2=0;j2<7;j2++)M[i2].push(P(14+i2*3,-12+j2*3,1+.012*Math.sin(i2*1.7+j2*1.1+t)))}
+x.strokeStyle=c6;x.lineWidth=1;x.globalAlpha=a[5]*.8;
+for(var i2=0;i2<7;i2++){poly(M[i2]);poly(M.map(function(r){return r[i2]}))}
+for(var i2=0;i2<6;i2++)for(var j2=0;j2<6;j2++)poly([M[i2][j2],M[i2+1][j2+1]]);
+var mc=M[3][3];if(mc[2]>0){x.fillStyle=ink;x.globalAlpha=a[5];x.fillText('DEM / TIN mesh',mc[0]+10,mc[1]+24)}
+hits=[];PJ.forEach(function(j){var p=sat(j.o,j.o[1]+t*j.o[2]*.35,1.2);if(!vis(p))return;var col=css(j.c);x.globalAlpha=ez(t-2.2);x.fillStyle=col;x.save();x.translate(p[0],p[1]);x.rotate(.785);x.fillRect(-5,-5,10,10);x.restore();
+x.fillStyle=ink;x.font='600 11.5px DM Sans,sans-serif';x.fillText(j.n,p[0]+11,p[1]+4);hits.push([p[0],p[1],j.u])});
 x.globalAlpha=1;requestAnimationFrame(draw)}
 function pt(e){var r=box.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]}
 box.addEventListener('pointerdown',function(e){drag=1;px=sx=e.clientX;py=sy=e.clientY;vx=0;box.setPointerCapture(e.pointerId)});
 box.addEventListener('pointermove',function(e){if(drag){var dx=e.clientX-px;lon0-=dx*.4;vx=Math.max(-5,Math.min(5,-dx*.4));lat0=Math.max(-.3,Math.min(1.1,lat0+(e.clientY-py)*.005));px=e.clientX;py=e.clientY}
-else{var p=pt(e),i=inv(p[0],p[1]);if(i)hud.textContent=fmt(i)}});
-box.addEventListener('pointerup',function(e){drag=0;if(Math.hypot(e.clientX-sx,e.clientY-sy)<6){var p=pt(e),i=inv(p[0],p[1]);
+else{var p=pt(e),i=inv(p[0],p[1]);if(i)hud.textContent=fmt(i);box.style.cursor=hits.some(function(h){return Math.hypot(h[0]-p[0],h[1]-p[1])<20})?'pointer':''}});
+box.addEventListener('pointerup',function(e){drag=0;if(Math.hypot(e.clientX-sx,e.clientY-sy)<6){var p=pt(e),i=inv(p[0],p[1]);for(var h=0;h<hits.length;h++)if(Math.hypot(hits[h][0]-p[0],hits[h][1]-p[1])<20){window.open(hits[h][2],'_blank','noopener');return}
 if(i){pins.push({la:i[0],lo:i[1],t:performance.now()});if(pins.length>6)pins.shift();C.push(i);if(C.length>14)C.splice(7,1);hud.textContent=fmt(i)}}});
 addEventListener('resize',size);size();requestAnimationFrame(draw);
-var pr=document.getElementById('pr');addEventListener('scroll',function(){pr.style.transform='scaleX('+(scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight))+')'},{passive:true});
+var pr=document.getElementById('pr');addEventListener('scroll',function(){lon0+=(scrollY-ls)*.15;ls=scrollY;var tl=document.querySelector('.tl'),r=tl.getBoundingClientRect();tl.style.setProperty('--p',Math.max(0,Math.min(1,(innerHeight*.65-r.top)/r.height))*100+'%');pr.style.transform='scaleX('+(scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight))+')'},{passive:true});
 document.querySelectorAll('.pc').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')})});
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,n=+el.dataset.n,s=performance.now();
 (function st(now){var p=Math.min(1,(now-s)/1200);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+(p>=1?'+':'');if(p<1)requestAnimationFrame(st)})(s);io.unobserve(el)})},{threshold:.6});
 document.querySelectorAll('[data-n]').forEach(function(el){io.observe(el)});
+function rad(){var s=document.getElementById('rs'),L=['Web mapping','JavaScript','Django','AI','ArcPy','Geomatics'],n=L.length,c=100,o='';
+function pt(i,v){var a=(-90+360/n*i)*RAD;return [c+80*v*Math.cos(a),c+80*v*Math.sin(a)].map(function(q){return q.toFixed(1)})}
+if(!s.dataset.b){[1,.66,.33].forEach(function(v){o+='<polygon class="g" points="'+L.map(function(_,i){return pt(i,v)}).join(' ')+'"/>'});L.forEach(function(l,i){var p=pt(i,1.17);o+='<text x="'+p[0]+'" y="'+(+p[1]+3)+'" text-anchor="middle">'+l+'</text>'});s.innerHTML=o+'<polygon id="rp"/>';s.dataset.b=1}
+document.getElementById('rp').setAttribute('points',A.map(function(a,i){return pt(i,a)}).join(' '))}rad();
+document.getElementById('tt').onclick=function(){var d=document.documentElement,cur=d.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');d.dataset.theme=cur==='dark'?'light':'dark'};
+var hero=document.getElementById('hero');hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--hx',e.clientX-r.left+'px');hero.style.setProperty('--hy',e.clientY-r.top+'px')});
+var ws=['products','web maps','3D platforms','smart tools'],wi=0,wc=8,dl=1,wd=document.getElementById('wd');
+if(!still)(function tick(){var w=ws[wi],d;wc+=dl?-1:1;wd.textContent=w.slice(0,wc);d=dl?35:75;if(!dl&&wc===w.length){dl=1;d=1700}else if(dl&&wc===0){dl=0;wi=(wi+1)%ws.length;d=300}setTimeout(tick,d)})();
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;el.classList.add('in');ro.unobserve(el);setTimeout(function(){el.classList.remove('rv','in');el.style.transitionDelay=''},1000)})},{threshold:.15});
+if(!still)document.querySelectorAll('.stats>div,.stack>div,.rd,.tl>div,.pc,.ct a').forEach(function(el,i){el.classList.add('rv');el.style.transitionDelay=(i%4)*70+'ms';ro.observe(el)});
+var ts=document.getElementById('toast');document.querySelector('.ct a[href^="mailto"]').addEventListener('click',function(){try{navigator.clipboard.writeText('boughanmi.wadi@gmail.com')}catch(e){}ts.classList.add('on');setTimeout(function(){ts.classList.remove('on')},1800)});
 })();
 </script>
 </body>
