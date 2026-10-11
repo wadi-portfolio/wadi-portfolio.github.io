@@ -71,6 +71,7 @@ footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
 .rd svg{width:230px;max-width:100%}.rd h3{font-size:20px;margin-bottom:8px}.rd p{margin:0;color:var(--mute);max-width:44ch}
 #rp{fill:color-mix(in srgb,var(--c1) 28%,transparent);stroke:var(--c1);stroke-width:2;transition:all .2s}
 .rd .g{fill:none;stroke:var(--bd)}.rd text{font:600 10px DM Sans,sans-serif;fill:var(--mute)}
+.pc.ft{grid-column:1/-1}.pc.pv{cursor:default}.pc.pv:hover{transform:none}.pc.pv em{color:var(--mute)}.pc.ft h3{max-width:70%}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -107,11 +108,11 @@ footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
 <p class="sub">Full-stack geospatial development, from database and map server to the interactive front end.</p>
 <div class="stack">
 <div style="--c:var(--c6)"><h3>Geomatics software</h3><div class="chips"><span>ArcGIS</span><span>QGIS</span><span>Global Mapper</span><span>Agisoft Metashape</span></div></div>
-<div style="--c:var(--c5)"><h3>GIS automation</h3><div class="chips"><span>ArcPy (Esri)</span><span>Python scripting</span><span>Cartographic generalisation</span></div></div>
+<div style="--c:var(--c5)"><h3>GIS automation</h3><div class="chips"><span>ArcPy (Esri)</span><span>Python scripting</span><span>Cartographic generalisation</span><span>Spatial analysis</span><span>Turf.js</span><span>Graph algorithms</span><span>Web Workers</span></div></div>
 <div style="--c:var(--c2)"><h3>Remote sensing</h3><div class="chips"><span>Satellite image analysis</span><span>Sentinel-2</span><span>Google Earth Engine</span><span>Change detection</span></div></div>
 <div style="--c:var(--c1)"><h3>Web mapping</h3><div class="chips"><span>Leaflet.js</span><span>Cesium.js</span><span>Three.js</span><span>GeoServer</span></div></div>
 <div style="--c:var(--c2)"><h3>Frontend</h3><div class="chips"><span>JavaScript</span><span>Chart.js</span><span>Responsive design</span></div></div>
-<div style="--c:var(--c3)"><h3>Backend and data</h3><div class="chips"><span>Django</span><span>GeoDjango</span><span>PostgreSQL</span><span>PostGIS</span><span>Geodatabase design</span><span>OGC services (WMS, WFS)</span></div></div>
+<div style="--c:var(--c3)"><h3>Backend and data</h3><div class="chips"><span>Django</span><span>GeoDjango</span><span>PostgreSQL</span><span>PostGIS</span><span>Geodatabase design</span><span>OGC services (WMS, WFS)</span><span>REST APIs</span></div></div>
 <div style="--c:var(--c4)"><h3>AI and vision</h3><div class="chips"><span>Python</span><span>YOLO</span><span>DeepSort</span></div></div>
 </div><div class="rd"><svg id="rs" viewBox="-35 -10 270 215" role="img" aria-label="Skill radar"></svg><div><h3>Live skill radar</h3><p>It mirrors the sliders in the hero. Move them and the shape changes.</p></div></div></div></section>
 
@@ -127,14 +128,16 @@ footer{text-align:center;color:var(--mute);padding:30px 6vw 50px;font-size:14px}
 </div></div></section>
 
 <section id="projects"><div class="w">
-<h2>Projects Category</h2><p class="sub">Real-world work.</p>
+<h2>Projects Category</h2><p class="sub">Real-world work. Some projects are private client work and cannot be shown publicly. Details are available on request.</p>
 <div class="pj">
-<a class="pc" style="--c:var(--c5)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>Automatic cartographic generalisation</h3><p>Automates map generalisation in ArcGIS with ArcPy: simplifying and aggregating features to produce clean maps at smaller scales.</p><div class="chips"><span>ArcPy</span><span>ArcGIS</span><span>Python</span></div></a>
-<a class="pc" style="--c:var(--c2)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>Change detection</h3><p>Detects land-cover change from Sentinel-2 imagery processed in Google Earth Engine, and shows the results on a Leaflet map served by Django.</p><div class="chips"><span>Google Earth Engine</span><span>Sentinel-2</span><span>Django</span><span>Leaflet</span></div></a>
-<a class="pc" style="--c:var(--c1)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>3D mapping app</h3><p>A web platform to search, query and analyse spatial data in 3D.</p><div class="chips"><span>Cesium</span><span>PostgreSQL</span><span>PostGIS</span><span>GeoServer</span></div></a>
-<a class="pc" style="--c:var(--c2)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>2D mapping app</h3><p>A web map to query spatial data and read clear statistics from it.</p><div class="chips"><span>GeoDjango</span><span>Leaflet</span><span>GeoServer</span></div></a>
-<a class="pc" style="--c:var(--c4)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>Object detection and tracking</h3><p>Detects and tracks objects in drone footage using YOLO with DeepSort multi-object tracking.</p><div class="chips"><span>Python</span><span>YOLO</span><span>DeepSort</span></div></a>
-<a class="pc" style="--c:var(--c3)" href="https://github.com/wadi-sudo" target="_blank" rel="noopener"><h3>Task management system</h3><p>A fully functional task management system.</p><div class="chips"><span>Django</span><span>Chart.js</span></div></a>
+<a class="pc ft" style="--c:var(--c3)" href="https://wadi-sudo.github.io/urban.html" target="_blank" rel="noopener"><h3>Urban Awareness (Synoptica)</h3><p>An interactive Tunisia dashboard that scores access to health, security and transport services, adjusts the score for population pressure, simulates new facilities, maps service gaps and routes to the nearest service. It also shows live air quality and weather.</p><div class="chips"><span>Leaflet</span><span>Turf.js</span><span>Spatial analysis</span><span>MarkerCluster</span><span>Routing Machine</span><span>Heatmaps</span></div><em>Open live demo →</em></a>
+<a class="pc" style="--c:var(--c6)" href="https://wadi-sudo.github.io/index.html" target="_blank" rel="noopener"><h3>Urban Analysis GIS: shortest-path engine</h3><p>Calculates shortest paths in the browser with Dijkstra's algorithm on a graph pre-computed in PostGIS, limited to a polygon zone and run with Web Workers. It also includes nearest and nearby analysis of points of interest across Tunisia.</p><div class="chips"><span>PostGIS</span><span>Dijkstra</span><span>Web Workers</span><span>Leaflet</span></div><em>Open live demo →</em></a>
+<div class="pc pv" style="--c:var(--c5)"><h3>Automatic cartographic generalisation</h3><p>Automates map generalisation in ArcGIS with ArcPy: simplifying and aggregating features to produce clean maps at smaller scales.</p><div class="chips"><span>ArcPy</span><span>ArcGIS</span><span>Python</span></div><em>🔒 Private project</em></div>
+<div class="pc pv" style="--c:var(--c2)"><h3>Change detection</h3><p>Detects land-cover change from Sentinel-2 imagery processed in Google Earth Engine, and shows the results on a Leaflet map served by Django.</p><div class="chips"><span>Google Earth Engine</span><span>Sentinel-2</span><span>Django</span><span>Leaflet</span></div><em>🔒 Private project</em></div>
+<div class="pc pv" style="--c:var(--c1)"><h3>3D mapping app</h3><p>A web platform to search, query and analyse spatial data in 3D.</p><div class="chips"><span>Cesium</span><span>PostgreSQL</span><span>PostGIS</span><span>GeoServer</span></div><em>🔒 Private project</em></div>
+<div class="pc pv" style="--c:var(--c2)"><h3>2D mapping app</h3><p>A web map to query spatial data and read clear statistics from it.</p><div class="chips"><span>GeoDjango</span><span>Leaflet</span><span>GeoServer</span></div><em>🔒 Private project</em></div>
+<div class="pc pv" style="--c:var(--c4)"><h3>Object detection and tracking</h3><p>Detects and tracks objects in drone footage using YOLO with DeepSort multi-object tracking.</p><div class="chips"><span>Python</span><span>YOLO</span><span>DeepSort</span></div><em>🔒 Private project</em></div>
+<div class="pc pv" style="--c:var(--c3)"><h3>Task management system</h3><p>A fully functional task management system.</p><div class="chips"><span>Django</span><span>Chart.js</span></div><em>🔒 Private project</em></div>
 </div></div></section>
 
 <section class="alt" id="contact"><div class="w">
@@ -169,7 +172,7 @@ function fmt(l){var o=((l[1]+540)%360)-180;return Math.abs(l[0]).toFixed(2)+'°'
 var dv=[],N=1500;for(var i=0;i<N;i++){var y=1-2*(i+.5)/N;dv.push(V(Math.asin(y)/RAD,(i*137.508)%360-180))}
 var T=[36.8,10.2],C=[[48.8,2.3],[25.2,55.3],[40.7,-74],[24.7,46.7],[-33.9,18.4],[35.7,139.7],[51.5,-.1]],
 AI=[[41,13],[33,4],[45,9],[30,20],[38,-3]],OR=[[.6,0,.9],[1.1,2,.7],[.25,4,1.2]],U='https://github.com/wadi-sudo',
-PJ=[{n:'3D mapping',c:'--c1',u:U,o:[.9,0,1]},{n:'2D mapping',c:'--c2',u:U,o:[-.7,2,.8]},{n:'Detection',c:'--c4',u:U,o:[.25,4,1.2]},{n:'Task system',c:'--c3',u:U,o:[1.3,1,.9]},{n:'Generalisation',c:'--c5',u:U,o:[-1.2,3,1.1]},{n:'Change detection',c:'--c2',u:U,o:[.5,5,.95]}];
+PJ=[{n:'3D mapping',c:'--c1',u:null,o:[.9,0,1]},{n:'2D mapping',c:'--c2',u:null,o:[-.7,2,.8]},{n:'Detection',c:'--c4',u:null,o:[.25,4,1.2]},{n:'Task system',c:'--c3',u:null,o:[1.3,1,.9]},{n:'Generalisation',c:'--c5',u:null,o:[-1.2,3,1.1]},{n:'Change detection',c:'--c2',u:null,o:[.5,5,.95]},{n:'Shortest path',c:'--c6',u:'https://wadi-sudo.github.io/index.html',o:[.8,2.5,1]},{n:'Urban Awareness',c:'--c3',u:'https://wadi-sudo.github.io/urban.html',o:[-.4,1.5,.85]}];
 function arc(c,t){var a=T[0]*RAD,b=c[0]*RAD,A1=V(T[0],T[1]),B1=V(c[0],c[1]),
 d=Math.acos(Math.max(-1,Math.min(1,A1[0]*B1[0]+A1[1]*B1[1]+A1[2]*B1[2])))||.01,s1=Math.sin((1-t)*d)/Math.sin(d),s2=Math.sin(t*d)/Math.sin(d);
 return Q([s1*A1[0]+s2*B1[0],s1*A1[1]+s2*B1[1],s1*A1[2]+s2*B1[2]],1+.28*Math.sin(Math.PI*t)*d/3)}
@@ -216,7 +219,7 @@ for(var i2=0;i2<7;i2++){poly(M[i2]);poly(M.map(function(r){return r[i2]}))}
 for(var i2=0;i2<6;i2++)for(var j2=0;j2<6;j2++)poly([M[i2][j2],M[i2+1][j2+1]]);
 var mc=M[3][3];if(mc[2]>0){x.fillStyle=ink;x.globalAlpha=a[5];x.fillText('DEM / TIN mesh',mc[0]+10,mc[1]+24)}
 hits=[];PJ.forEach(function(j){var p=sat(j.o,j.o[1]+t*j.o[2]*.35,1.2);if(!vis(p))return;var col=css(j.c);x.globalAlpha=ez(t-2.2);x.fillStyle=col;x.save();x.translate(p[0],p[1]);x.rotate(.785);x.fillRect(-5,-5,10,10);x.restore();
-x.fillStyle=ink;x.font='600 11.5px DM Sans,sans-serif';x.fillText(j.n,p[0]+11,p[1]+4);hits.push([p[0],p[1],j.u])});
+x.fillStyle=ink;x.font='600 11.5px DM Sans,sans-serif';x.fillText(j.n,p[0]+11,p[1]+4);if(j.u)hits.push([p[0],p[1],j.u])});
 x.globalAlpha=1;requestAnimationFrame(draw)}
 function pt(e){var r=box.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]}
 box.addEventListener('pointerdown',function(e){drag=1;px=sx=e.clientX;py=sy=e.clientY;vx=0;box.setPointerCapture(e.pointerId)});
